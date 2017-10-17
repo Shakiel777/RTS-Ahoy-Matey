@@ -1,34 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.Networking;
-using UnityEngine;
 
-public class MyNetworkManager : NetworkManager {
-
+public class MyNetworkManager : NetworkManager
+{
     public void MyStartHost()
     {
         Debug.Log(Time.timeSinceLevelLoad + " Starting Host.");
         StartHost();
-        
     }
 
     public override void OnStartHost()
     {
-        Debug.Log(Time.timeSinceLevelLoad + " Host Started.");
+        Debug.Log(Time.timeSinceLevelLoad + " Host started.");
     }
 
     public override void OnStartClient(NetworkClient myClient)
     {
-        Debug.Log(Time.timeSinceLevelLoad + " Client Start Request.");
-        // base.OnStartClient(myClient);
+        Debug.Log(Time.timeSinceLevelLoad + " Client start requested.");
         InvokeRepeating("PrintDots", 0f, 1f);
     }
 
     public override void OnClientConnect(NetworkConnection conn)
     {
-        Debug.Log(Time.timeSinceLevelLoad + " Client is connected to IP: " + conn.address);
+        Debug.Log(Time.timeSinceLevelLoad + " Client is connect to IP: " + conn.address);
         CancelInvoke();
-        // base.OnClientConnect(conn);
     }
 
     void PrintDots()
