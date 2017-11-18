@@ -24,6 +24,7 @@ public class MyNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         Debug.Log(Time.timeSinceLevelLoad + " Client is connect to IP: " + conn.address);
+        Debug.Log(Time.timeSinceLevelLoad + " IP Address: " + Network.player.ipAddress + " Port: " + networkPort);
         CancelInvoke();
     }
 
